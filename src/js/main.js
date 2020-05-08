@@ -11,24 +11,29 @@ import '../css/style.css';
 
 import {tns} from 'tiny-slider/src/tiny-slider';
 
-let featuredSlider = tns({
-    container: '.featured-slider',
-    items: 1,
-    slideBy: 'page',
-    autoHeight: true,
-    controlsContainer: '.featured-slider-controls',
-    responsive: {
-        768: {
-            items: 2,
-            gutter: 20
-        },
-        1024: {
-            items: 4,
-            gutter: 20
-        },
-        1280: {
-            items: 6,
-            gutter: 20
+window.tns = tns;
+
+var toggleNavbar = function() {
+    let navbarToggle = document.querySelector('#navbar-toggle');
+    navbarToggle.addEventListener("click", function() {
+        let navbarWrap = document.querySelector('#navbar-wrapper');
+        if (navbarWrap.classList.contains('-translate-x-64')) {
+            navbarWrap.classList.remove('-translate-x-64');
+            navbarWrap.classList.add('translate-x-0');
+        } else {
+            navbarWrap.classList.remove('translate-x-0');
+            navbarWrap.classList.add('-translate-x-64');
         }
-    }
-});
+    });
+}
+
+if (document.readyState !== 'loading')
+{
+    toggleNavbar();
+} else {
+    document.addEventListener('DOMContentLoaded', toggleNavbar);
+}
+
+var a = function() {
+    console.log("asdasd");
+}

@@ -16,6 +16,24 @@
     </head>
     <body class="">
     
+        <!-- nav -->
+        <section class="w-full fixed top-0 z-50">
+            <nav class="">
+                <div class="bg-white p-2">
+                    <span id="navbar-toggle"><i class="fas fa-bars"></i></span>
+                    <span class="font-bold uppercase px-2">Woodwork</span>
+                </div>
+                <div id="navbar-wrapper" class="bg-white uppercase w-64 h-screen fixed transition duration-300 ease-in-out transform -translate-x-64 overflow-x-hidden overflow-y-auto">
+                    <ul class="py-4">
+                        <li class="px-2 py-2 hover:bg-black hover:text-white"><a href="#">Home</a></li>
+                        <li class="px-2 py-2 hover:bg-black hover:text-white"><a href="#">Shop</a></li>
+                        <li class="px-2 py-2 hover:bg-black hover:text-white"><a href="#">Blog</a></li>
+                        <li class="px-2 py-2 hover:bg-black hover:text-white"><a href="#">Contacts</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+        
         <!-- header with slider -->
         <section id="page-header" class="h-screen flex items-center">
             <div class="container mx-auto flex-1 text-center">
@@ -318,5 +336,28 @@
         </footer>
 
         <script src="../dist/main.js"></script>
+        <script>
+            var slider = tns({
+                container: '.featured-slider',
+                items: 1,
+                slideBy: 'page',
+                autoHeight: true,
+                controlsContainer: '.featured-slider-controls',
+                responsive: {
+                    768: {
+                        items: 2,
+                        gutter: 20
+                    },
+                    1024: {
+                        items: 4,
+                        gutter: 20
+                    },
+                    1280: {
+                        items: 6,
+                        gutter: 20
+                    }
+                }
+            });
+        </script>
     </body>
 </html>

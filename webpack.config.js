@@ -1,6 +1,7 @@
 const path = require('path');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const MozJpeg = require('imagemin-mozjpeg');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -13,6 +14,9 @@ module.exports = {
     devServer: {
         hot: true,
         host: '0.0.0.0',
+        publicPath: '/dist/',
+        compress: true,
+        watchContentBase: true
     },
     module: {
         rules: [
@@ -32,6 +36,9 @@ module.exports = {
             }
         ]
     },
+    externals: {
+        tns: 'tiny-slider'
+    },
     plugins: [
         new CleanWebpackPlugin(),
         new CopyWebpackPlugin([{
@@ -42,5 +49,6 @@ module.exports = {
             pngquant: ({quality: [0.5, 0.5]}),
             plugins: [MozJpeg({quality: 50})],
         }),
+        new CompressionPlugin(),
     ]
 };
